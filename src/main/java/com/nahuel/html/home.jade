@@ -1,0 +1,27 @@
+extends ./core/page.jade
+
+block content
+  // Test
+  div.content(class="container")
+    ul(class="row list")
+      each user in users
+        li(class="user") user.firstname + " " + user.lastname
+    form(role="form", class="row", action="#")
+      fieldset(class="form-group")
+        label(for="firstname") Firstname
+        input(type="text", class="form-control", name="firstname", placeholder="Enter Firstname")
+      fieldset(class="form-group")
+        label(for="lastname") Lastname
+        input(type="text", class="form-control", name="lastname", placeholder="Enter Lastname")
+      fieldset(class="form-group")
+        label(for="username") Username
+        input(type="text", class="form-control", name="username", placeholder="Enter Username")
+      fieldset(class="form-group")
+        label(for="email") Email
+        input(type="text", class="form-control", name="email", placeholder="Enter Email")
+      fieldset(class="form-group")
+        label(for="password") Password
+        input(type="password", class="form-control", name="password")
+      fieldset(class="form-group")
+        button(class="btn btn-primary send") Add
+        button(class="btn btn-default reset") Reset

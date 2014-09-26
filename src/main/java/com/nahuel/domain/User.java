@@ -1,5 +1,8 @@
 package com.nahuel.domain;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "user")
 public class User extends Entity {
 	
 	private String firstname;
@@ -7,6 +10,26 @@ public class User extends Entity {
 	private String username;
 	private String email;
 	private String password;
+	
+	public User() {
+		firstname = "Default";
+		lastname = "Default";
+		username = "Unknown";
+		email = "unknown@unknown.com";
+		password = "";
+	}
+	
+	public User(String firstname,
+				String lastname,
+				String username,
+				String email,
+				String password) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+	}
 	
 	/**
 	 * @return the firstname

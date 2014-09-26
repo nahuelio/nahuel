@@ -16,15 +16,15 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 	
 	<beans profile="dev">
-		<context:property-placeholder location="classpath:/WEB-INF/config/mongo-dev.properties"/>
+		<context:property-placeholder location="/WEB-INF/config/mongo-dev.properties"/>
 	</beans>
 	
 	<beans profile="stage">
-		<context:property-placeholder location="classpath:/WEB-INF/config/mongo-stage.properties"/>
+		<context:property-placeholder location="/WEB-INF/config/mongo-stage.properties"/>
 	</beans>
 	
 	<beans profile="production">
-		<context:property-placeholder location="classpath:/WEB-INF/config/mongo-production.properties"/>
+		<context:property-placeholder location="/WEB-INF/config/mongo-production.properties"/>
 	</beans>
 	
 	<beans profile="dev,stage,production">
