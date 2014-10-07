@@ -12,8 +12,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 	
 		
-		<bean id="userService" class="com.nahuel.service.impl.UserService">
-			<constructor-arg ref="userRepository"></constructor-arg>
-		</bean>
+		<bean id="userService" class="com.nahuel.service.impl.UserService" />
+		<bean id="todoService" class="com.nahuel.service.impl.TodoService" />
 
 </beans>

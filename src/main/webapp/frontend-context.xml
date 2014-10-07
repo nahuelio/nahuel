@@ -17,24 +17,9 @@
 	
 	<import resource="context.xml"/>
 	
-	<!-- Mongo DB -->
-	
-	<bean id="MongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-  		<constructor-arg ref="MongoFactory" />
-  	</bean>
-  	
-	<mongo:repositories mongo-template-ref="MongoTemplate" base-package="com.nahuel.repository"></mongo:repositories>
-	
-	<!-- Spring MVC -->
-	<mvc:annotation-driven />
-	
 	<!-- Controller Layer -->
-	
 	<bean class="org.springframework.data.web.config.SpringDataWebConfiguration" />
 	<context:component-scan base-package="com.nahuel.controller"></context:component-scan>
-	
-	<!-- Service Layer -->
-	<import resource="services.xml"/>
 	
 	<!-- View Layer -->
 	

@@ -1,5 +1,5 @@
 package com.nahuel.service;
 
-public interface Service  {
+public interface Service<T, ID>  {
 	
 }

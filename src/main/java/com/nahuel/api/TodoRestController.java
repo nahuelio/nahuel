@@ -9,35 +9,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nahuel.domain.User;
-import com.nahuel.service.impl.UserService;
+import com.nahuel.domain.Todo;
+import com.nahuel.service.impl.TodoService;
 
 @RestController
-@RequestMapping("/user")
-public class UserRestController {
+@RequestMapping("api/todo")
+public class TodoRestController {
 
 	@Autowired
-	private UserService userService;
+	private TodoService todoService;
 	
 	@RequestMapping(value = "/save", method = RequestMethod.PUT)
-	public @ResponseBody User save(@PathVariable("user") User user) {
-		return this.userService.crud.save(user);
+	public @ResponseBody Todo save(@PathVariable("todo") Todo todo) {
+		return this.todoService.crud.save(todo);
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-	public @ResponseBody User delete(@PathVariable("id") User user) {
-		this.userService.crud.delete(user);
-		return user;
+	public @ResponseBody Todo delete(@PathVariable("id") Todo todo) {
+		this.todoService.crud.delete(todo);
+		return todo;
 	}
 	
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
-	public @ResponseBody List<User> findAll() {
-		return this.userService.crud.findAll();
+	public @ResponseBody List<Todo> findAll() {
+		return this.todoService.crud.findAll();
 	}
 	
 	@RequestMapping(value = "/find", method = RequestMethod.POST)
-	public @ResponseBody User findOne(@PathVariable("id") User user) {
-		return user;
+	public @ResponseBody Todo findOne(@PathVariable("id") Todo todo) {
+		return todo;
 	}
 	
 }

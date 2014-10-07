@@ -1,13 +1,14 @@
 package com.nahuel.service.impl;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nahuel.domain.User;
+import com.nahuel.repository.UserRepository;
+import com.nahuel.service.Service;
 
-public class UserService extends BaseService<User, String> {
+public class UserService extends BaseService<User, String> implements Service<User, String> {
 	
-	public UserService(MongoRepository<User, String> crud) {
-		this.crud = crud;
-	}
+	@Autowired
+	public UserRepository crud;
 	
 }

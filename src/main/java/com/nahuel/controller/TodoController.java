@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.nahuel.service.impl.UserService;
+import com.nahuel.service.impl.TodoService;
 
 @Controller
-@RequestMapping("/home")
-public class HomeController extends BaseController {
+@RequestMapping("/todo")
+public class TodoController extends BaseController {
 	
 	@Autowired
-	private UserService userService;
+	private TodoService todoService;
 	
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView home() {
-		ModelAndView mv = new ModelAndView("home");
-		mv.addObject("title", "Home");
-		mv.addObject("users", this.userService.findAll());
+		ModelAndView mv = new ModelAndView("core/page");
+		mv.addObject("title", "Todos");
 		return mv;
 	}
 	

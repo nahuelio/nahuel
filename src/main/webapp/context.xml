@@ -28,15 +28,28 @@
 	</beans>
 	
 	<beans profile="dev,stage,production">
-	
-		<mongo:mongo id="mongodb" host="${mongo.host}" port="${mongo.port}"></mongo:mongo>
+		
+		<!-- Mongo DB -->
+		<bean id="MongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	  		<constructor-arg ref="MongoFactory" />
+	  	</bean>
+	  	
+	  	<mongo:mongo id="mongodb" host="${mongo.host}" port="${mongo.port}"></mongo:mongo>
 		
 		<mongo:db-factory id="MongoFactory"
 			dbname="${mongo.dbname}"
 			username="${mongo.username}"
 			password="${mongo.password}"
 			mongo-ref="mongodb" />
-			
+	  	
+	  	<mvc:annotation-driven />
+	  	
+		<mongo:repositories mongo-template-ref="MongoTemplate" base-package="com.nahuel.repository"></mongo:repositories>
+		
+		<import resource="services.xml"/>
+		
+		<context:component-scan base-package="com.nahuel.api"></context:component-scan>
+		
 	</beans>
 	
 </beans>
