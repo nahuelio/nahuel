@@ -1,3 +1,4 @@
+src/main/java/com/nahuel/html/resources/lib/*
 target/*
 *.class
 

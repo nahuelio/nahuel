@@ -16,27 +16,40 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.1.xsd">
 	
 	<beans profile="dev">
-		<context:property-placeholder location="classpath:/WEB-INF/config/mongo-dev.properties"/>
+		<context:property-placeholder location="/WEB-INF/config/mongo-dev.properties"/>
 	</beans>
 	
 	<beans profile="stage">
-		<context:property-placeholder location="classpath:/WEB-INF/config/mongo-stage.properties"/>
+		<context:property-placeholder location="/WEB-INF/config/mongo-stage.properties"/>
 	</beans>
 	
 	<beans profile="production">
-		<context:property-placeholder location="classpath:/WEB-INF/config/mongo-production.properties"/>
+		<context:property-placeholder location="/WEB-INF/config/mongo-production.properties"/>
 	</beans>
 	
 	<beans profile="dev,stage,production">
-	
-		<mongo:mongo id="mongodb" host="${mongo.host}" port="${mongo.port}"></mongo:mongo>
+		
+		<!-- Mongo DB -->
+		<bean id="MongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+	  		<constructor-arg ref="MongoFactory" />
+	  	</bean>
+	  	
+	  	<mongo:mongo id="mongodb" host="${mongo.host}" port="${mongo.port}"></mongo:mongo>
 		
 		<mongo:db-factory id="MongoFactory"
 			dbname="${mongo.dbname}"
 			username="${mongo.username}"
 			password="${mongo.password}"
 			mongo-ref="mongodb" />
-			
+	  	
+	  	<mvc:annotation-driven />
+	  	
+		<mongo:repositories mongo-template-ref="MongoTemplate" base-package="com.nahuel.repository"></mongo:repositories>
+		
+		<import resource="services.xml"/>
+		
+		<context:component-scan base-package="com.nahuel.api"></context:component-scan>
+		
 	</beans>
 	
 </beans>

@@ -17,18 +17,27 @@
 	
 	<import resource="context.xml"/>
 	
-	<!-- Mongo DB -->
-	<bean id="MongoDB" class="org.springframework.data.mongodb.core.MongoTemplate">
-  		<constructor-arg ref="mongodb" />
-  	</bean>
-  	
-	<mongo:repositories mongo-template-ref="MongoDB" base-package="com.nahuel.repository"></mongo:repositories>
-	
-	<!-- MVC -->
+	<!-- Controller Layer -->
+	<bean class="org.springframework.data.web.config.SpringDataWebConfiguration" />
 	<context:component-scan base-package="com.nahuel.controller"></context:component-scan>
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/"></property>
+	<!-- View Layer -->
+	
+	<mvc:resources mapping="/core/**" location="/WEB-INF/html/resources/"/>
+	
+	<bean id="jadeConfiguration" class="de.neuland.jade4j.JadeConfiguration">
+	    <property name="prettyPrint" value="false" />
+	    <property name="caching" value="false" />
+	    <property name="templateLoader">
+	    	<bean id="templateLoader" class="de.neuland.jade4j.spring.template.SpringTemplateLoader">
+				<property name="basePath" value="/WEB-INF/html/" />
+			</bean>
+	    </property>
+	</bean>
+	
+	<bean id="viewResolver" class="de.neuland.jade4j.spring.view.JadeViewResolver">
+	    <property name="configuration" ref="jadeConfiguration" />
+	    <property name="renderExceptions" value="true" />
 	</bean>
 	
 </beans>

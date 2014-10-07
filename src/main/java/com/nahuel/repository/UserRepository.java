@@ -1,9 +1,13 @@
 package com.nahuel.repository;
 
-import java.io.Serializable;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository<User, ID extends Serializable> extends MongoRepository<User, ID> {
+import com.nahuel.domain.User;
+
+public interface UserRepository extends MongoRepository<User, String> {
+	
+	User findByUsername(String username);
+	
+	User findByEmail(String email);
 	
 }

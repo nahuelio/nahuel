@@ -1,0 +1,30 @@
+{
+	"name": "nahuel",
+	"version": "0.0.1",
+	"homepage": "",
+	"authors": [
+		"kuakman <3dimentionar@gmail.com>"
+	],
+	"description": "Social Network Experiment",
+	"dependencies": {
+		"require": "git@github.com:jrburke/requirejs-bower.git#2.1.11",
+		"backbone": "1.1.2",
+		"underscore": "1.6.0",
+		"jquery": "2.1.1",
+		"modernizr": "2.8.1",
+		"bootstrap": "3.1.1"
+	},
+	"keywords": [
+		"Nahuel",
+		"Social",
+		"Netowrk",
+		"Backbone"
+	],
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"src/**/*.*"
+	]
+}
