@@ -2,10 +2,14 @@ extends ./layout.jade
 
 block header
   div(class="header")
-    h4 #{title}
+    h4 #{section}
 
 block content
   div(class="content")
+
+block scripts
+  script(type="text/javascript")
+    require(!{mvc}, function(Model, View, Service, Controller) { return app.createMVSC.apply(this, arguments); });
 
 block footer
   div(class="footer")

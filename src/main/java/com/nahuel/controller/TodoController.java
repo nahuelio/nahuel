@@ -18,9 +18,7 @@ public class TodoController extends BaseController {
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public @ResponseBody ModelAndView home() {
-		ModelAndView mv = new ModelAndView("core/page");
-		mv.addObject("title", "Todos");
-		return mv;
+		return this.createModelAndView("core/page", "todos", "Todos");
 	}
 	
 }

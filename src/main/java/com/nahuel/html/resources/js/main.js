@@ -4,7 +4,7 @@
 **/
 requirejs.config({
 
-	baseUrl: '/nahuel/core',
+	baseUrl: '/nahuel/static',
 	
 	paths: {
 		'lib': 'lib',
@@ -61,13 +61,3 @@ app = {
 	}
 		
 };
-
-/**
-*	Main require
-**/
-require(['js/model/todos/model',
-         'js/view/todos/view',
-         'js/service/todos/service',
-         'js/controller/todos/controller'], function(Model, View, Service, Controller) {
-	return app.createMVSC.apply(this, arguments);
-});
